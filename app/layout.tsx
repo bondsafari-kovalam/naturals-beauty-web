@@ -1,5 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { SiteMotion } from '../components/site-motion'
 import { WhatsAppFloat } from '../components/whatsapp-float'
 import './globals.css'
 
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className="antialiased">
         {children}
         <WhatsAppFloat />
+        <SiteMotion />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
