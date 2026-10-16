@@ -11,7 +11,6 @@ export const siteConfig = {
 export const navItems = [
   { label: "The Academy", href: "/the-academy" },
   { label: "Courses", href: "/courses" },
-  { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
 ]
 
@@ -463,7 +462,7 @@ export const imageCredit = "Photography via Unsplash; replace with approved acad
 
 export const defaultCourse = courses[0]
 
-export const routeLabels = { home: "Home", contact: "Contact", shop: "Shop" }
+export const routeLabels = { home: "Home", contact: "Contact" }
 
 export const availabilityNote = "Current availability is shared on enquiry."
 
@@ -490,8 +489,6 @@ export const openGraphImage = imageUrls.hero
 export const currentYear = new Date().getFullYear()
 
 export const shouldShowShop = false
-
-export const shopNote = "The shop is awaiting confirmation and current product information."
 
 export const currentEventsNote = "No current workshop dates are published. Enquire for upcoming opportunities."
 
@@ -564,8 +561,6 @@ export const noFakeIntegration = true
 export const noFakeTestimonials = true
 
 export const noFakeEvents = true
-
-export const noFakeShop = true
 
 export const noFakeClaims = true
 

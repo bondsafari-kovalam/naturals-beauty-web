@@ -30,7 +30,6 @@ export function SiteFooter() {
           <Link href="/">Home</Link>
           <Link href="/the-academy">The Academy</Link>
           <Link href="/courses">Courses</Link>
-          <Link href="/shop">Shop</Link>
           <Link href="/contact">Contact</Link>
         </nav>
         <nav className="footer-links-column" aria-label="Information links">
