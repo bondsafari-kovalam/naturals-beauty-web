@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { SiteFooter } from '../../../components/site-footer'
@@ -9,11 +11,35 @@ export function generateStaticParams() {
   return courses.map(({ slug }) => ({ slug }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const course = getCourse(slug)
 
-  return { title: course ? `${course.title} | ${siteConfig.name}` : `Course | ${siteConfig.name}` }
+  if (!course) {
+    return {
+      title: `Course not found | ${siteConfig.name}`,
+      description: 'Explore professional beauty courses at Naturals Beauty Academy, Alappuzha.',
+    }
+  }
+
+  return {
+    title: `${course.title} | ${siteConfig.name}`,
+    description: course.description,
+    alternates: { canonical: `/courses/${course.slug}` },
+    openGraph: {
+      type: 'website',
+      title: course.title,
+      description: course.description,
+      url: `/courses/${course.slug}`,
+      images: [{ url: course.image, alt: course.imageAlt ?? `${course.title} course` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: course.title,
+      description: course.description,
+      images: [course.image],
+    },
+  }
 }
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -38,7 +64,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
           {course.duration && <p className="course-duration course-detail-duration">Duration: {course.duration}</p>}
           <Link href="/contact" className="button button-dark">Enquire about this course <ArrowRight /></Link>
         </div>
-        <div className="course-detail-image"><img src={course.image} alt={course.imageAlt ?? `${course.title} course`} /></div>
+        <div className="course-detail-image"><Image src={course.image} alt={course.imageAlt ?? `${course.title} course`} fill priority sizes="(max-width: 900px) 90vw, 44vw" /></div>
       </section>
 
       <section className="course-detail-overview">
@@ -78,7 +104,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
         <div className="course-grid">
           {otherCourses.map((otherCourse) => (
             <Link href={`/courses/${otherCourse.slug}`} className="course-card" key={otherCourse.slug}>
-              <div className="course-image"><img src={otherCourse.image} alt={otherCourse.imageAlt ?? `${otherCourse.title} course`} /></div>
+              <div className="course-image"><Image src={otherCourse.image} alt={otherCourse.imageAlt ?? `${otherCourse.title} course`} fill sizes="(max-width: 600px) 86vw, (max-width: 900px) 45vw, 30vw" /></div>
               <p className="card-tag">{otherCourse.category}</p>
               <h3>{otherCourse.title}</h3>
               {otherCourse.duration && <p className="course-duration">Duration: {otherCourse.duration}</p>}

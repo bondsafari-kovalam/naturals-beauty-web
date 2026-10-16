@@ -4,33 +4,36 @@ import { WhatsAppFloat } from '../components/whatsapp-float'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://naturalsbeautyacademypro.com'),
   title: 'Naturals Beauty Academy | Alappuzha',
   description: 'Professional beauty education in hair, skin, makeup and more at Naturals Beauty Academy, Alappuzha.',
-  generator: 'v0.app',
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    siteName: 'Naturals Beauty Academy',
+    title: 'Naturals Beauty Academy | Alappuzha',
+    description: 'Professional beauty education in hair, skin, makeup and more at Naturals Beauty Academy, Alappuzha.',
+    url: '/',
+    images: [{ url: '/icon.svg', width: 512, height: 512, alt: 'Naturals Beauty Academy logo' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Naturals Beauty Academy | Alappuzha',
+    description: 'Professional beauty education in hair, skin, makeup and more at Naturals Beauty Academy, Alappuzha.',
+    images: ['/icon.svg'],
+  },
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml', sizes: 'any' }],
+    shortcut: '/icon.svg',
+    apple: [{ url: '/icon.svg', type: 'image/svg+xml', sizes: 'any' }],
   },
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
+  colorScheme: 'light',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: '(prefers-color-scheme: light)', color: '#70358f' },
+    { media: '(prefers-color-scheme: dark)', color: '#70358f' },
   ],
 }
 

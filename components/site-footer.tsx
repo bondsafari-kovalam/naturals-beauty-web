@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 
 const academyMapLink = 'https://www.google.com/maps/search/?api=1&query=Cheriya%20Kalavoor%20Temple%2C%20ASAP%20Community%20Skill%20Park%2C%20Alappuzha%2C%20Kerala%20688522%2C%20India'
@@ -14,7 +15,7 @@ export function SiteFooter() {
       </div>
       <div className="footer-grid">
         <div className="footer-brand-column">
-          <img className="footer-logo" src="/naturals-logo.png" alt="Naturals Beauty Academy" />
+          <Image className="footer-logo" src="/naturals-logo.png" alt="Naturals Beauty Academy" width={168} height={60} />
           <p className="footer-brand-copy">Practical beauty education for a beautiful career. Learn your craft, build confidence and take your next step with Naturals.</p>
           <p className="footer-social-label">Follow the academy</p>
           <div className="socials">
